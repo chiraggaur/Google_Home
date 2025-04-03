@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,13 +9,24 @@ import {
   Switch,
 } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useRouter } from "expo-router";
+import { useLocalSearchParams, useRouter } from "expo-router";
 
 export default function SearchScreen() {
   const router = useRouter();
   const [isIncognito, setIsIncognito] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const { query } = useLocalSearchParams();
+
+  // Auto-fill search bar when query is received
+  useEffect(() => {
+    if (query) {
+      // Check if query is an array and take the first element if it is
+      const queryString = Array.isArray(query) ? query[0] : query;
+      setSearchQuery(queryString); // Auto-fill input
+      handleSearch(); // Trigger search automatically
+    }
+  }, [query]);
 
   const handleSearch = async () => {
     if (searchQuery.trim()) {

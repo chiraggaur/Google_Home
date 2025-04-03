@@ -2,12 +2,14 @@ export default {
   expo: {
     name: "my-app",
     slug: "my-app",
+    scheme: "myapp",
     version: "1.0.0",
     orientation: "portrait",
-    icon: "./assets/icon.png",
+    icon: "./app/assets/images/icon.png",
+    newArchEnabled: true,
     userInterfaceStyle: "light",
     splash: {
-      image: "./assets/splash.png",
+      image: "./app/assets/images/splash-icon.png",
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
@@ -16,17 +18,21 @@ export default {
       supportsTablet: true,
     },
     android: {
+      package: "com.google.homeapp",
       adaptiveIcon: {
-        foregroundImage: "./assets/adaptive-icon.png",
+        foregroundImage: "./app/assets/images/adaptive-icon.png",
         backgroundColor: "#ffffff",
       },
     },
     web: {
-      favicon: "./assets/favicon.png",
+      favicon: "./app/assets/images/favicon.png",
     },
     extra: {
-      EXPO_PUBLIC_GOOGLE_API_KEY: process.env.GOOGLE_API_KEY,
+      EXPO_PUBLIC_GOOGLE_API_KEY: process.env.GoogleApiKey,
       GOOGLE_CX: process.env.GOOGLE_CX,
+      eas: {
+        projectId: "aa921512-155e-44d3-ac2d-783a0fea1287",
+      },
     },
   },
 };

@@ -1,6 +1,6 @@
 import Constants from "expo-constants";
 
-const GOOGLE_API_KEY = Constants.expoConfig?.extra?.GOOGLE_API_KEY;
+const GOOGLE_API_KEY = Constants.expoConfig?.extra?.EXPO_PUBLIC_GOOGLE_API_KEY;
 const GOOGLE_CX = Constants.expoConfig?.extra?.GOOGLE_CX;
 
 interface SearchResult {
@@ -29,7 +29,7 @@ export const searchGoogle = async (query: string): Promise<SearchResult[]> => {
   const URL = `https://www.googleapis.com/customsearch/v1?q=${encodeURIComponent(
     query
   )}&key=${GOOGLE_API_KEY}&cx=${GOOGLE_CX}`;
-
+  console.log("🔍 Searching Google:", URL);
   try {
     const response = await fetch(URL);
     if (!response.ok) {

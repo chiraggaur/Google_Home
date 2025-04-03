@@ -91,7 +91,7 @@ export default StyleSheet.create({
     backgroundColor: "#303134",
     padding: 16,
     borderRadius: 24,
-    width: 80,
+    width: 90,
   },
   quickLinkIcon: {
     fontSize: 24,
